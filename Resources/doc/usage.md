@@ -1,8 +1,8 @@
 # Using the Resolver library
 
-The main purpose of this library is to make your classes easily configurable by adding wrappers to [Symfony's OptionsResolver](https://github.com/symfony/options-resolver)
-component. If you do not know it yet (shame on you!), check out it's documentation to get a better picture of what you
-will be getting with this library.
+This library merely serves as a wrapper for [Symfony's OptionsResolver](https://github.com/symfony/OptionsResolver)
+component. If you do not know it yet (shame on you!), check out it's [documentation](https://github.com/symfony/OptionsResolver/README.md)
+to get a better picture of what you will be getting.
 
 
 ## Making your classes configurable
@@ -73,7 +73,7 @@ class Car
 But how would you deal with the values stored in the parameters? Since they are basically just a bunch of key/value
 pairs, how could you be sure that the correct values are always set and are of the correct type?
 
-Well this is where the OptionsResolver comes in handy, and together with the `Resolvable` trait in this library, we can
+Well this is where the `OptionsResolver` comes in handy, together with the `Resolvable` trait in this library, we can
 change the `Car` class mentioned above to allow for configurable options that follow a strict scheme:
 
 ```php
@@ -168,4 +168,5 @@ class Car
 ```
 
 Now your object will resolve the given parameters during construction, rather than during a `setParameters()`-call.
-
+Don't forget to check out the documentation about the [OptionResolver itself](https://github.com/symfony/OptionsResolver/README.md)
+to find out more ways to constrain your options with.
