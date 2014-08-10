@@ -66,9 +66,6 @@ class ResolvableMock
  */
 class ResolvableTest extends \PHPUnit_Framework_TestCase
 {
-    /**
-     * @covers Resolvable::resolve
-     */
     public function testIsInitiallyEmpty()
     {
         $resolvable = new ResolvableMock();
@@ -78,7 +75,7 @@ class ResolvableTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers  Resolvable::resolve
+     * @covers  \CL\Resolver\Resolvable::resolve
      * @depends testIsInitiallyEmpty
      */
     public function testResolveSuccessful(ResolvableMock $resolvable)
@@ -92,7 +89,7 @@ class ResolvableTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers  Resolvable::resolve
+     * @covers  \CL\Resolver\Resolvable::resolve
      * @depends testIsInitiallyEmpty
      * @expectedException \Symfony\Component\OptionsResolver\Exception\MissingOptionsException
      */
