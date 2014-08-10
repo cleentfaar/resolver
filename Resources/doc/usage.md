@@ -73,7 +73,7 @@ class Car
 But how would you deal with the values stored in the parameters? Since they are basically just a bunch of key/value
 pairs, how could you be sure that the correct values are always set and are of the correct type?
 
-Well this is where the `OptionsResolver` comes in handy, together with the `Resolvable` trait in this library, we can
+Well this is where the `OptionsResolver` comes in handy. Together with the `Resolvable` trait in this library, we can
 change the `Car` class mentioned above to allow for configurable options that follow a strict scheme:
 
 ```php
