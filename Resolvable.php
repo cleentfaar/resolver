@@ -23,35 +23,28 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 trait Resolvable
 {
     /**
-     * The OptionsResolver instance that will define the configurable options.
-     *
-     * @var OptionsResolverInterface|null
-     */
-    protected $resolver;
-
-    /**
-     * @param array $options The options to resolve.
+     * @param array                         $options  The options to resolve.
+     * @param OptionsResolverInterface|null $resolver Optional resolver to use, will be created otherwise.
      *
      * @return array The resolved options.
      *
-     * @throws OptionDefinitionException If configuring the resolver failed
-     * @throws MissingOptionsException If resolving failed due to a missing option
-     * @throws InvalidOptionsException If resolving failed due to an option with the wrong type or value
+     * @throws OptionDefinitionException If configuring the resolver failed (i.e. during 'configureResolver()')
+     * @throws MissingOptionsException   If resolving failed due to a missing option
+     * @throws InvalidOptionsException   If resolving failed due to an option with the wrong type or value
      */
-    public function resolve(array $options)
+    protected function resolve(array $options, OptionsResolverInterface $resolver = null)
     {
-        if ($this->resolver === null) {
+        if ($resolver === null) {
             try {
                 $resolver = new OptionsResolver();
                 $this->configureResolver($resolver);
-                $this->resolver = $resolver;
             } catch (OptionDefinitionException $e) {
                 throw $e;
             }
         }
 
         try {
-            return $this->resolver->resolve($options);
+            return $resolver->resolve($options);
         } catch (InvalidOptionsException $e) {
             throw $e;
         } catch (MissingOptionsException $e) {
